@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -67,18 +67,17 @@ class _HomePageMobileState extends State<HomePageMobile> {
   }
 
   Widget projects() {
-    return Container();
+    return Column(
+      children: [
+        topicTitle(title: '-Projects-'),
+      ],
+    );
   }
 
   Widget myDescription() {
     return Column(
       children: [
-        Text(
-          '-About Me-',
-          style: GoogleFonts.lobster(
-            textStyle: TextStyle(fontSize: 20, color: AppColor.yellowText),
-          ),
-        ),
+        topicTitle(title: '-About Me-'),
         Container(
           width: .85.sw,
           padding: const EdgeInsets.all(30),
@@ -101,6 +100,23 @@ class _HomePageMobileState extends State<HomePageMobile> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget topicTitle({required String title}) {
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Neumorphic(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 3),
+          child: Text(
+            title,
+            style: GoogleFonts.lobster(
+              textStyle: TextStyle(fontSize: 22, color: AppColor.greenText),
+            ),
+          ),
+        ),
+      ),
     );
   }
 
