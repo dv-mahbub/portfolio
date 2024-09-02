@@ -4,9 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marquee_list/marquee_list.dart';
 import 'package:portfolio/controller/constants/colors.dart';
 import 'package:portfolio/controller/constants/string.dart';
-import 'package:text_marquee/text_marquee.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -194,12 +194,19 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Container(
       color: const Color.fromARGB(255, 174, 35, 238),
       height: 30,
-      child: TextMarquee(
-        'This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               This Portfolio built using Flutter               ',
-        style: GoogleFonts.josefinSans(
-          textStyle: TextStyle(color: AppColor.whiteText),
-        ),
-        spaceSize: 100,
+      child: MarqueeList(
+        scrollDuration: const Duration(seconds: 3),
+        children: [
+          ...List.generate(
+            25,
+            (index) => Text(
+              'This portfolio is built using Flutter              ',
+              style: GoogleFonts.josefinSans(
+                textStyle: TextStyle(color: AppColor.whiteText),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
