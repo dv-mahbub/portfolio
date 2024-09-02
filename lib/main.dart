@@ -1,4 +1,4 @@
-import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/controller/responsive/responsive_layout.dart';
 import 'package:portfolio/views/splash_screen_page.dart';
@@ -21,10 +21,8 @@ class MyApp extends StatelessWidget {
             builder: (_, child) {
               return const MaterialApp(
                 title: 'Flutter Demo',
-                home: NeumorphicApp(
-                  home: ResponsiveLayout(
-                    mobileView: SplashScreenPage(),
-                  ),
+                home: ResponsiveLayout(
+                  mobileView: SplashScreenPage(),
                 ),
               );
             });

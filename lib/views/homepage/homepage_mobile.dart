@@ -1,12 +1,12 @@
-import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marquee/marquee.dart';
 import 'package:portfolio/controller/constants/colors.dart';
 import 'package:portfolio/controller/constants/string.dart';
+import 'package:text_marquee/text_marquee.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -106,14 +106,12 @@ class _HomePageMobileState extends State<HomePageMobile> {
   Widget topicTitle({required String title}) {
     return Padding(
       padding: const EdgeInsets.all(3.0),
-      child: Neumorphic(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 3),
-          child: Text(
-            title,
-            style: GoogleFonts.lobster(
-              textStyle: TextStyle(fontSize: 22, color: AppColor.greenText),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 3),
+        child: Text(
+          title,
+          style: GoogleFonts.lobster(
+            textStyle: TextStyle(fontSize: 22, color: AppColor.greenText),
           ),
         ),
       ),
@@ -193,12 +191,12 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Container(
       color: const Color.fromARGB(255, 252, 124, 252),
       height: 30,
-      child: Marquee(
-        text: 'This Portfolio built using Flutter',
+      child: TextMarquee(
+        'This Portfolio built using Flutter',
         style: GoogleFonts.josefinSans(
           textStyle: TextStyle(color: AppColor.greenText),
         ),
-        blankSpace: 100,
+        spaceSize: 100,
       ),
     );
   }

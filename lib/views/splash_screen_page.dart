@@ -11,11 +11,15 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
-  
-@override
+  @override
   void initState() {
-    Future.delayed(const Duration(seconds: 0), (){
-      navigate (context: context, mobileView: const HomePageMobile(), );
+    Future.delayed(const Duration(seconds: 0), () {
+      if (mounted) {
+        navigate(
+          context: context,
+          mobileView: const HomePageMobile(),
+        );
+      }
     });
     super.initState();
   }
@@ -23,7 +27,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Lottie.asset('assets/json/box_loading.json', width: 200),),
+      body: Center(
+        child: Lottie.asset('assets/json/box_loading.json', width: 200),
+      ),
     );
   }
 }
