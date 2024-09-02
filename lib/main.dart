@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
             builder: (_, child) {
               return const MaterialApp(
                 title: 'Mahbub Al Hasan',
+                debugShowCheckedModeBanner: false,
                 home: ResponsiveLayout(
                   mobileView: SplashScreenPage(),
                 ),

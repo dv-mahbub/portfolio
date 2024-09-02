@@ -7,7 +7,7 @@ class AppColor {
 
   static Color fabColor = const Color.fromARGB(255, 51, 155, 55);
 
-  static Color yellowText = Colors.yellow;
+  static Color yellowText = Colors.yellow.shade700;
   static Color blackText = Colors.black87;
   static Color whiteText = const Color.fromARGB(255, 255, 255, 255);
   static Color greenText = const Color.fromARGB(255, 5, 95, 34);
