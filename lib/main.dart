@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
             // Use builder only if you need to use library outside ScreenUtilInit context
             builder: (_, child) {
               return const MaterialApp(
-                title: 'Flutter Demo',
+                title: 'Mahbub Al Hasan',
                 home: ResponsiveLayout(
                   mobileView: SplashScreenPage(),
                 ),
