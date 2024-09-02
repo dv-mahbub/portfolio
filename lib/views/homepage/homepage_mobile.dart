@@ -42,6 +42,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         ),
       ),
       body: Container(
+        width: 1.sw,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xff153063), Color(0xff77dfc1)],
