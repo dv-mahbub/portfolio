@@ -56,11 +56,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
             children: [
               const Gap(5),
               marqueeNote(),
-              const Gap(10),
+              const Gap(15),
               topTitlePart(),
-              const Gap(25),
+              const Gap(15),
               myDescription(),
-              const Gap(25),
+              const Gap(10),
               projects(),
             ],
           ),
@@ -124,7 +124,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
   Widget topTitlePart() {
     return GlassContainer(
       blur: 15,
-      width: .95.sw,
+      width: ScreenUtil().screenWidth < 600 ? .95.sw : .75.sw,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
