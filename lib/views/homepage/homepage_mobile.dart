@@ -73,6 +73,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Column(
       children: [
         topicTitle(title: '-Projects-'),
+        Container(),
       ],
     );
   }
