@@ -11,22 +11,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveApp(
-      builder: (context) {
-        return ScreenUtilInit(
-            designSize: const Size(360, 690),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            // Use builder only if you need to use library outside ScreenUtilInit context
-            builder: (_, child) {
-              return const MaterialApp(
-                title: 'Mahbub Al Hasan',
-                debugShowCheckedModeBanner: false,
-                home: ResponsiveLayout(
-                  mobileView: SplashScreenPage(),
-                ),
-              );
-            });
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return ResponsiveApp(
+          builder: (context) {
+            return const MaterialApp(
+              title: 'Mahbub Al Hasan',
+              debugShowCheckedModeBanner: false,
+              home: ResponsiveLayout(
+                mobileView: SplashScreenPage(),
+              ),
+            );
+          },
+        );
       },
     );
   }
