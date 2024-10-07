@@ -74,7 +74,6 @@ class _HomePageMobileState extends State<HomePageMobile> {
       children: [
         topicTitle(title: '-Projects-'),
         Container(
-          height: 100,
           width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -137,49 +136,58 @@ class _HomePageMobileState extends State<HomePageMobile> {
       width: ScreenUtil().screenWidth < 600 ? .95.sw : .75.sw,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Column(
-            children: [
-              Text(
-                'Mahbub Al Hasan',
-                style: GoogleFonts.aBeeZee(
-                  textStyle: TextStyle(
-                      color: AppColor.whiteText,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
-              Text(
-                'Flutter Developer',
-                style: GoogleFonts.aBeeZee(
-                  textStyle: TextStyle(
-                      color: AppColor.whiteText,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
-              Row(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              width: ScreenUtil().screenWidth < 600 ? .55.sw : .45.sw,
+              child: Column(
                 children: [
-                  customIconButton(
-                      iconData: Icons.mail, url: 'mailto:dv.mahbub@gmail.com'),
-                  customIconButton(
-                      iconData: FontAwesomeIcons.linkedin,
-                      url: 'https://www.linkedin.com/in/dv-mahbub'),
-                  customIconButton(
-                      iconData: FontAwesomeIcons.github,
-                      url: 'https://github.com/dv-mahbub'),
-                  customIconButton(
-                      iconData: FontAwesomeIcons.youtube,
-                      url: 'https://www.youtube.com/@dv.mahbub'),
+                  Text(
+                    'Mahbub Al Hasan',
+                    style: GoogleFonts.aBeeZee(
+                      textStyle: TextStyle(
+                        color: AppColor.whiteText,
+                        fontSize: ScreenUtil().screenWidth < 600 ? 21 : 25,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Flutter Developer',
+                    style: GoogleFonts.aBeeZee(
+                      textStyle: TextStyle(
+                        color: AppColor.whiteText,
+                        fontSize: ScreenUtil().screenWidth < 600 ? 18 : 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      customIconButton(
+                          iconData: Icons.mail,
+                          url: 'mailto:dv.mahbub@gmail.com'),
+                      customIconButton(
+                          iconData: FontAwesomeIcons.linkedin,
+                          url: 'https://www.linkedin.com/in/dv-mahbub'),
+                      customIconButton(
+                          iconData: FontAwesomeIcons.github,
+                          url: 'https://github.com/dv-mahbub'),
+                      customIconButton(
+                          iconData: FontAwesomeIcons.youtube,
+                          url: 'https://www.youtube.com/@dv.mahbub'),
+                    ],
+                  )
                 ],
-              )
-            ],
-          ),
-          Image.asset(
-            AppImages.profilePicture,
-            width: 180,
-          ),
-        ]),
+              ),
+            ),
+            Image.asset(
+              AppImages.profilePicture,
+              width: ScreenUtil().screenWidth < 600 ? .38.sw : .28.sw,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -193,7 +201,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
       icon: Icon(
         iconData,
         color: AppColor.whiteText,
-        size: 35,
+        size: ScreenUtil().screenWidth < 600 ? 28 : 35,
       ),
       highlightColor: AppColor.highlightColor,
       hoverColor: AppColor.hoverColor,
