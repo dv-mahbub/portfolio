@@ -81,7 +81,13 @@ class _HomePageMobileState extends State<HomePageMobile> {
           ),
           const Gap(15),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () async {
+              const phoneNumber = '+8801767646871';
+              const message = 'Hello, I would like to get in touch!';
+              final url = Uri.parse(
+                  'https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}');
+              await launchUrl(url);
+            },
             shape: const CircleBorder(),
             backgroundColor: AppColor.fabColor,
             child: Icon(
