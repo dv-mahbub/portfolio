@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/controller/global_function/navigate.dart';
+import 'package:portfolio/components/global_function/navigate.dart';
 import 'package:portfolio/views/homepage/homepage_mobile.dart';
 
 class SplashScreenPage extends StatefulWidget {

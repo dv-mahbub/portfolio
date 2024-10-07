@@ -5,8 +5,8 @@ import 'package:gap/gap.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_list/marquee_list.dart';
-import 'package:portfolio/controller/constants/colors.dart';
-import 'package:portfolio/controller/constants/string.dart';
+import 'package:portfolio/components/constants/colors.dart';
+import 'package:portfolio/components/constants/string.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -80,7 +80,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
           ),
+          child: Image.asset(ProjectImages.edmc),
         ),
+        Gap(10),
       ],
     );
   }
