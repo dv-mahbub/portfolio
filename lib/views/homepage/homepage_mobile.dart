@@ -19,6 +19,18 @@ class HomePageMobile extends StatefulWidget {
 }
 
 class _HomePageMobileState extends State<HomePageMobile> {
+  final ScrollController scrollController = ScrollController();
+
+  final GlobalKey topKey = GlobalKey();
+  final GlobalKey aboutMeKey = GlobalKey();
+  final GlobalKey projectsKey = GlobalKey();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +42,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
         ),
         backgroundColor: AppColor.primary,
         iconTheme: IconThemeData(color: AppColor.whiteText),
-
         // automaticallyImplyLeading: false,
       ),
-      drawer: const Drawer(),
+      drawer: customDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         shape: const CircleBorder(),
@@ -44,6 +55,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         ),
       ),
       body: SingleChildScrollView(
+        controller: scrollController,
         child: Container(
           width: 1.sw,
           decoration: const BoxDecoration(
@@ -56,7 +68,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Gap(5),
+              Gap(key: topKey, 5),
               marqueeNote(),
               const Gap(15),
               topTitlePart(),
@@ -71,8 +83,71 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
+  Drawer customDrawer() {
+    return Drawer(
+      backgroundColor: Colors.green,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              color: AppColor.whiteText.withOpacity(.5),
+              alignment: Alignment.center,
+              child: Text(
+                'Protfolio',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: AppColor.primary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('About Me'),
+              iconColor: AppColor.whiteText,
+              textColor: AppColor.whiteText,
+              onTap: () {
+                scrollToSpecificPosition(key: aboutMeKey);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> scrollToSpecificPosition({required GlobalKey key}) async {
+    await scrollController.animateTo(0,
+        duration: const Duration(microseconds: 10), curve: Curves.bounceIn);
+    if (mounted) {
+      Navigator.pop(context);
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (aboutMeKey.currentContext != null) {
+        final RenderBox renderBox =
+            key.currentContext!.findRenderObject() as RenderBox;
+        final position = renderBox.localToGlobal(Offset.zero);
+        final scrollPosition = position.dy; // Get the absolute position
+        double totalHeightOffset =
+            AppBar().preferredSize.height + MediaQuery.of(context).padding.top;
+
+        // Calculate the desired scroll position
+        double targetScrollPosition = scrollPosition - totalHeightOffset;
+
+        // Scroll to the desired position
+        await scrollController.animateTo(
+          targetScrollPosition,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
   Widget projects() {
     return Column(
+      key: projectsKey,
       children: [
         topicTitle(title: '-Projects-'),
         Wrap(
@@ -86,7 +161,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
             ),
           ],
         ),
-        Gap(10),
+        const Gap(1000),
       ],
     );
   }
@@ -117,6 +192,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
 
   Widget myDescription() {
     return Column(
+      key: aboutMeKey,
       children: [
         topicTitle(title: '-About Me-'),
         Container(
@@ -247,7 +323,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
           ...List.generate(
             25,
             (index) => Text(
-              'This portfolio is built using Flutter              ',
+              'This portfolio is built using Flutter by me              ',
               style: GoogleFonts.josefinSans(
                 textStyle: TextStyle(color: AppColor.whiteText),
               ),
