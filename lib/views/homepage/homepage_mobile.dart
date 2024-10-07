@@ -75,7 +75,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         topicTitle(title: '-Projects-'),
         Container(
           height: 100,
-          width: 200,
+          width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
