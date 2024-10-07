@@ -73,7 +73,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Column(
       children: [
         topicTitle(title: '-Projects-'),
-        Container(),
+        Container(
+          height: 100,
+          width: 200,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
       ],
     );
   }
