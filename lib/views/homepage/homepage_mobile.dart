@@ -102,18 +102,34 @@ class _HomePageMobileState extends State<HomePageMobile> {
                 ),
               ),
             ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('About Me'),
-              iconColor: AppColor.whiteText,
-              textColor: AppColor.whiteText,
-              onTap: () {
-                scrollToSpecificPosition(key: aboutMeKey);
-              },
+            drawerItem(
+              icon: Icons.person,
+              title: 'About Me',
+              scrollKey: aboutMeKey,
+            ),
+            drawerItem(
+              icon: Icons.file_copy,
+              title: 'Projects',
+              scrollKey: projectsKey,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget drawerItem(
+      {required IconData icon,
+      required String title,
+      required GlobalKey scrollKey}) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      iconColor: AppColor.whiteText,
+      textColor: AppColor.whiteText,
+      onTap: () {
+        scrollToSpecificPosition(key: scrollKey);
+      },
     );
   }
 
