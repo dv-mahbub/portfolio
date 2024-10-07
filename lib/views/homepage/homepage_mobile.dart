@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -73,16 +75,43 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Column(
       children: [
         topicTitle(title: '-Projects-'),
-        Container(
-          width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Image.asset(ProjectImages.edmc),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            ...List.generate(
+              5,
+              (index) => projectContainer(
+                  image: ProjectImages.edmc, link: 'https://www.google.com'),
+            ),
+          ],
         ),
         Gap(10),
       ],
+    );
+  }
+
+  Widget projectContainer({required String image, required String link}) {
+    Uri url = Uri.parse(link);
+    return InkWell(
+      onTap: () async {
+        try {
+          await launchUrl(url);
+        } catch (e) {
+          log('Url launch failed: $e');
+        }
+      },
+      child: Container(
+        width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.asset(ProjectImages.edmc),
+        ),
+      ),
     );
   }
 
