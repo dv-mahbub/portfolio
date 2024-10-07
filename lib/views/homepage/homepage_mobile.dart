@@ -222,11 +222,13 @@ class _HomePageMobileState extends State<HomePageMobile> {
             ...List.generate(
               5,
               (index) => projectContainer(
-                  image: ProjectImages.edmc, link: 'https://www.google.com'),
+                  image: ProjectImages.edmc,
+                  link:
+                      'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
             ),
           ],
         ),
-        const Gap(1000),
+        const Gap(10),
       ],
     );
   }
