@@ -24,6 +24,23 @@ class _HomePageMobileState extends State<HomePageMobile> {
   final GlobalKey topKey = GlobalKey();
   final GlobalKey aboutMeKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
+  bool isFabVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(() {
+      if (scrollController.offset > 25 && !isFabVisible) {
+        setState(() {
+          isFabVisible = true;
+        });
+      } else if (scrollController.offset <= 20 && isFabVisible) {
+        setState(() {
+          isFabVisible = false;
+        });
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -45,14 +62,35 @@ class _HomePageMobileState extends State<HomePageMobile> {
         // automaticallyImplyLeading: false,
       ),
       drawer: customDrawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        shape: const CircleBorder(),
-        backgroundColor: AppColor.fabColor,
-        child: Icon(
-          FontAwesomeIcons.whatsapp,
-          color: AppColor.whiteText,
-        ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Visibility(
+            visible: isFabVisible,
+            child: FloatingActionButton(
+              onPressed: () {
+                scrollToSpecificPosition(key: topKey, isFromDrawer: false);
+              },
+              shape: const CircleBorder(),
+              backgroundColor: Colors.grey.shade100,
+              child: Icon(
+                FontAwesomeIcons.arrowUp,
+                color: AppColor.primary,
+              ),
+            ),
+          ),
+          const Gap(15),
+          FloatingActionButton(
+            onPressed: () {},
+            shape: const CircleBorder(),
+            backgroundColor: AppColor.fabColor,
+            child: Icon(
+              FontAwesomeIcons.whatsapp,
+              color: AppColor.whiteText,
+            ),
+          ),
+          const Gap(15),
+        ],
       ),
       body: SingleChildScrollView(
         controller: scrollController,
@@ -133,11 +171,16 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Future<void> scrollToSpecificPosition({required GlobalKey key}) async {
-    await scrollController.animateTo(0,
-        duration: const Duration(microseconds: 10), curve: Curves.bounceIn);
-    if (mounted) {
-      Navigator.pop(context);
+  Future<void> scrollToSpecificPosition(
+      {required GlobalKey key, bool isFromDrawer = true}) async {
+    if (key != topKey) {
+      await scrollController.animateTo(0,
+          duration: const Duration(microseconds: 10), curve: Curves.bounceIn);
+    }
+    if (isFromDrawer) {
+      if (mounted) {
+        Navigator.pop(context);
+      }
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (aboutMeKey.currentContext != null) {
