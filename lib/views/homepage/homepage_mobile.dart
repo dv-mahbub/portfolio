@@ -216,8 +216,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
       children: [
         topicTitle(title: '-Projects-'),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
+          runSpacing: .01.sw,
           children: [
             ...List.generate(
               5,
@@ -244,7 +244,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
         }
       },
       child: Container(
-        width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
+        width: (ScreenUtil().screenWidth < 900)
+            ? .45.sw
+            : (ScreenUtil().screenWidth < 1200)
+                ? .3.sw
+                : .22.sw,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
