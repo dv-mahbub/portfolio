@@ -263,7 +263,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
       children: [
         topicTitle(title: '-About Me-'),
         Container(
-          width: ScreenUtil().screenWidth < 600 ? .85.sw : .7.sw,
+          width: (ScreenUtil().screenWidth < 600)
+              ? .85.sw
+              : (ScreenUtil().screenWidth < 900)
+                  ? .75.sw
+                  : 800,
           padding: EdgeInsets.all(ScreenUtil().screenWidth < 600 ? 35 : 55),
           decoration: BoxDecoration(
             image: DecorationImage(
