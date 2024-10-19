@@ -216,8 +216,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
       children: [
         topicTitle(title: '-Projects-'),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
+          runSpacing: .01.sw,
           children: [
             projectContainer(
                 image: ProjectImages.edmc,
@@ -245,7 +245,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
         }
       },
       child: Container(
-        width: (ScreenUtil().screenWidth < 600) ? .45.sw : .3.sw,
+        width: (ScreenUtil().screenWidth < 900)
+            ? .45.sw
+            : (ScreenUtil().screenWidth < 1200)
+                ? .3.sw
+                : .22.sw,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
@@ -264,7 +268,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
       children: [
         topicTitle(title: '-About Me-'),
         Container(
-          width: ScreenUtil().screenWidth < 600 ? .85.sw : .7.sw,
+          width: (ScreenUtil().screenWidth < 600)
+              ? .85.sw
+              : (ScreenUtil().screenWidth < 900)
+                  ? .75.sw
+                  : 800,
           padding: EdgeInsets.all(ScreenUtil().screenWidth < 600 ? 35 : 55),
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -310,54 +318,53 @@ class _HomePageMobileState extends State<HomePageMobile> {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              width: ScreenUtil().screenWidth < 600 ? .55.sw : .45.sw,
-              child: Column(
-                children: [
-                  Text(
-                    'Mahbub Al Hasan',
-                    style: GoogleFonts.aBeeZee(
-                      textStyle: TextStyle(
-                        color: AppColor.whiteText,
-                        fontSize: ScreenUtil().screenWidth < 600 ? 21 : 25,
-                        fontWeight: FontWeight.w700,
-                      ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Mahbub Al Hasan',
+                  style: GoogleFonts.aBeeZee(
+                    textStyle: TextStyle(
+                      color: AppColor.whiteText,
+                      fontSize: ScreenUtil().screenWidth < 600 ? 21 : 25,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Text(
-                    'Flutter Developer',
-                    style: GoogleFonts.aBeeZee(
-                      textStyle: TextStyle(
-                        color: AppColor.whiteText,
-                        fontSize: ScreenUtil().screenWidth < 600 ? 18 : 20,
-                        fontWeight: FontWeight.w700,
-                      ),
+                ),
+                Text(
+                  'Flutter Developer',
+                  style: GoogleFonts.aBeeZee(
+                    textStyle: TextStyle(
+                      color: AppColor.whiteText,
+                      fontSize: ScreenUtil().screenWidth < 600 ? 18 : 20,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Row(
-                    children: [
-                      customIconButton(
-                          iconData: Icons.mail,
-                          url: 'mailto:dv.mahbub@gmail.com'),
-                      customIconButton(
-                          iconData: FontAwesomeIcons.linkedin,
-                          url: 'https://www.linkedin.com/in/dv-mahbub'),
-                      customIconButton(
-                          iconData: FontAwesomeIcons.github,
-                          url: 'https://github.com/dv-mahbub'),
-                      customIconButton(
-                          iconData: FontAwesomeIcons.youtube,
-                          url: 'https://www.youtube.com/@dv.mahbub'),
-                    ],
-                  )
-                ],
-              ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    customIconButton(
+                        iconData: Icons.mail,
+                        url: 'mailto:dv.mahbub@gmail.com'),
+                    customIconButton(
+                        iconData: FontAwesomeIcons.linkedin,
+                        url: 'https://www.linkedin.com/in/dv-mahbub'),
+                    customIconButton(
+                        iconData: FontAwesomeIcons.github,
+                        url: 'https://github.com/dv-mahbub'),
+                    customIconButton(
+                        iconData: FontAwesomeIcons.youtube,
+                        url: 'https://www.youtube.com/@dv.mahbub'),
+                  ],
+                )
+              ],
             ),
             Image.asset(
               AppImages.profilePicture,
-              width: ScreenUtil().screenWidth < 600 ? .38.sw : .28.sw,
+              width: ScreenUtil().screenWidth < 600 ? .32.sw : 180,
             ),
           ],
         ),
