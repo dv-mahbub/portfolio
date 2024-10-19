@@ -219,13 +219,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
           spacing: 8,
           runSpacing: 8,
           children: [
-            ...List.generate(
-              5,
-              (index) => projectContainer(
-                  image: ProjectImages.edmc,
-                  link:
-                      'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
-            ),
+            projectContainer(
+                image: ProjectImages.edmc,
+                link:
+                    'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
+            projectContainer(
+                image: ProjectImages.dalAttendance,
+                link:
+                    'https://play.google.com/store/apps/details?id=com.dhakaapps.attendance'),
           ],
         ),
         const Gap(10),
