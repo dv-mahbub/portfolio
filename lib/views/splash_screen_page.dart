@@ -15,9 +15,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     Future.delayed(const Duration(seconds: 0), () {
       if (mounted) {
-        navigate(
+        replaceNavigate(
           context: context,
-          mobileView: const HomePageMobile(),
+          child: const HomePageMobile(),
         );
       }
     });

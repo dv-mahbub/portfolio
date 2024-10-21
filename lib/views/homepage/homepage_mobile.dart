@@ -244,20 +244,24 @@ class _HomePageMobileState extends State<HomePageMobile> {
           log('Url launch failed: $e');
         }
       },
-      child: Container(
-        width: (ScreenUtil().screenWidth < 900)
-            ? .45.sw
-            : (ScreenUtil().screenWidth < 1200)
-                ? .3.sw
-                : .22.sw,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.asset(ProjectImages.edmc),
-        ),
+      child: Column(
+        children: [
+          Container(
+            width: (ScreenUtil().screenWidth < 900)
+                ? .45.sw
+                : (ScreenUtil().screenWidth < 1200)
+                    ? .3.sw
+                    : .22.sw,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(image),
+            ),
+          ),
+        ],
       ),
     );
   }
