@@ -34,7 +34,7 @@ class ProjectData {
   String? shortDescription;
   String? features;
   String? tools;
-  String? link;
+  String? url;
 
   ProjectData({
     this.title,
@@ -42,7 +42,7 @@ class ProjectData {
     this.shortDescription,
     this.features,
     this.tools,
-    this.link,
+    this.url,
   });
 
   factory ProjectData.fromJson(Map<String, dynamic> json) => ProjectData(
@@ -51,7 +51,7 @@ class ProjectData {
         shortDescription: json["shortDescription"],
         features: json["features"],
         tools: json["tools"],
-        link: json["link"],
+        url: json["url"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -60,6 +60,6 @@ class ProjectData {
         "shortDescription": shortDescription,
         "features": features,
         "tools": tools,
-        "link": link,
+        "url": url,
       };
 }
