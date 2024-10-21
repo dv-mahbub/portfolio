@@ -35,14 +35,18 @@ class ProjectDetailsPage extends StatelessWidget {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(.05.sw),
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: .05.sw, vertical: 8),
               child: Column(
                 children: [
                   Image.asset(
                     projectData.image!,
-                    width: ScreenUtil().screenWidth < 600 ? .9.sw : .7.sw,
+                    width: ScreenUtil().screenWidth < 600
+                        ? .9.sw
+                        : ScreenUtil().screenWidth < 900
+                            ? .7.sw
+                            : .5.sw,
                     fit: BoxFit.fitWidth,
                   ),
                   const Gap(15),
