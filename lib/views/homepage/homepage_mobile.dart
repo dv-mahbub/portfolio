@@ -75,8 +75,24 @@ class _HomePageMobileState extends State<HomePageMobile> {
         backgroundColor: AppColor.primary,
         iconTheme: IconThemeData(color: AppColor.whiteText),
         // automaticallyImplyLeading: false,
+        actions: ScreenUtil().screenWidth < 600
+            ? null
+            : [
+                actionWidget(
+                  icon: Icons.person,
+                  title: 'About Me',
+                  scrollKey: aboutMeKey,
+                ),
+                const Gap(25),
+                actionWidget(
+                  icon: Icons.file_copy,
+                  title: 'Projects',
+                  scrollKey: projectsKey,
+                ),
+                const Gap(25),
+              ],
       ),
-      drawer: customDrawer(),
+      drawer: ScreenUtil().screenWidth < 600 ? customDrawer() : null,
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -177,6 +193,26 @@ class _HomePageMobileState extends State<HomePageMobile> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget actionWidget(
+      {required IconData icon,
+      required String title,
+      required GlobalKey scrollKey}) {
+    return InkWell(
+      onTap: () {
+        scrollToSpecificPosition(key: scrollKey, isFromDrawer: false);
+      },
+      child: Row(
+        children: [
+          Icon(icon),
+          Text(
+            title,
+            style: TextStyle(color: AppColor.whiteText),
+          ),
+        ],
       ),
     );
   }
