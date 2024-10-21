@@ -5,16 +5,24 @@
          "image":"assets/photos/projects/edmc_banner.png",
          "shortDescription":"Diagnostic Center App",
          "features":"•Authentication  •FCM Push Notification  •Patients Information  •Patient Registration  •Medical Reports  •Social Communication (Post, like, Comment)",
-         "tools":"•Provider State Management, •Firebase for notification and others ",
+         "tools":"•Provider State Management, •Firebase for notification",
          "link":"https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
      },
      {
          "title":"DAL Attendance",
          "image":"assets/photos/projects/dal_attendance_banner.png",
-         "shortDescription":"•Automatic Attendance App",
-         "features":"Automatic Attendance System",
-         "tools":"•Network Status Detection  •Flutter Foreground Service",
+         "shortDescription":"Automatic Attendance App",
+         "features":"•Automatic Attendance System",
+         "tools":"•Network Status Change Detection  •Flutter Foreground Service",
          "link":"https://play.google.com/store/apps/details?id=com.dhakaapps.attendance"
+     },
+     {
+         "title":"E-Relatives",
+         "image":"assets/photos/projects/e_relatives_banner.png",
+         "shortDescription":"Online Medical Services App",
+         "features":"•Blood Donation Request  •Medical Test Request •Subscription  •Medicine and Health Product Purchase (e-commerce) •Ambulance Request  •Doctor Appointment",
+         "tools":"•Provider State Management •Firebase for Push Notification",
+         "link":"https://play.google.com/store/apps/details?id=com.e_relatives.app"
      }
     ]
   }
