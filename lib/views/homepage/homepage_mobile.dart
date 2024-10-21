@@ -9,7 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_list/marquee_list.dart';
 import 'package:portfolio/components/constants/colors.dart';
 import 'package:portfolio/components/constants/string.dart';
+import 'package:portfolio/components/global_function/navigate.dart';
 import 'package:portfolio/models/project_data_model.dart';
+import 'package:portfolio/views/homepage/project_details_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -242,14 +244,6 @@ class _HomePageMobileState extends State<HomePageMobile> {
                 projectData: projectDataModel!.data![index],
               ),
             ),
-            // projectContainer(
-            //     image: ProjectImages.edmc,
-            //     link:
-            //         'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
-            // projectContainer(
-            //     image: ProjectImages.dalAttendance,
-            //     link:
-            //         'https://play.google.com/store/apps/details?id=com.dhakaapps.attendance'),
           ],
         ),
         const Gap(10),
@@ -261,11 +255,12 @@ class _HomePageMobileState extends State<HomePageMobile> {
     // Uri url = Uri.parse(projectData.link ?? '');
     return InkWell(
       onTap: () async {
-        // try {
-        //   await launchUrl(url);
-        // } catch (e) {
-        //   log('Url launch failed: $e');
-        // }
+        if (mounted) {
+          navigate(
+            context: context,
+            child: ProjectDetailsPage(projectData: projectData),
+          );
+        }
       },
       child: Column(
         children: [
