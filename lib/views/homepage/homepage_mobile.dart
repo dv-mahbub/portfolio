@@ -1,6 +1,6 @@
-import 'dart:developer';
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_list/marquee_list.dart';
 import 'package:portfolio/components/constants/colors.dart';
 import 'package:portfolio/components/constants/string.dart';
+import 'package:portfolio/models/project_data_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -20,6 +21,7 @@ class HomePageMobile extends StatefulWidget {
 
 class _HomePageMobileState extends State<HomePageMobile> {
   final ScrollController scrollController = ScrollController();
+  ProjectDataModel? projectDataModel;
 
   final GlobalKey topKey = GlobalKey();
   final GlobalKey aboutMeKey = GlobalKey();
@@ -29,6 +31,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
   @override
   void initState() {
     super.initState();
+    loadProjectData();
     scrollController.addListener(() {
       if (scrollController.offset > 25 && !isFabVisible) {
         setState(() {
@@ -40,6 +43,16 @@ class _HomePageMobileState extends State<HomePageMobile> {
         });
       }
     });
+  }
+
+  loadProjectData() async {
+    String jsonString =
+        await rootBundle.loadString('assets/json/project_data.json');
+    if (mounted) {
+      setState(() {
+        projectDataModel = ProjectDataModel.fromJson(jsonDecode(jsonString));
+      });
+    }
   }
 
   @override
@@ -119,7 +132,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
               const Gap(15),
               myDescription(),
               const Gap(10),
-              projects(),
+              projectDataModel == null
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : projects(),
             ],
           ),
         ),
@@ -219,14 +236,20 @@ class _HomePageMobileState extends State<HomePageMobile> {
           spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
           runSpacing: .01.sw,
           children: [
-            projectContainer(
-                image: ProjectImages.edmc,
-                link:
-                    'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
-            projectContainer(
-                image: ProjectImages.dalAttendance,
-                link:
-                    'https://play.google.com/store/apps/details?id=com.dhakaapps.attendance'),
+            ...List.generate(
+              projectDataModel?.data?.length ?? 0,
+              (index) => projectContainer(
+                projectData: projectDataModel!.data![index],
+              ),
+            ),
+            // projectContainer(
+            //     image: ProjectImages.edmc,
+            //     link:
+            //         'https://play.google.com/store/apps/details?id=com.edmcbd.edmc'),
+            // projectContainer(
+            //     image: ProjectImages.dalAttendance,
+            //     link:
+            //         'https://play.google.com/store/apps/details?id=com.dhakaapps.attendance'),
           ],
         ),
         const Gap(10),
@@ -234,15 +257,15 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Widget projectContainer({required String image, required String link}) {
-    Uri url = Uri.parse(link);
+  Widget projectContainer({required ProjectData projectData}) {
+    // Uri url = Uri.parse(projectData.link ?? '');
     return InkWell(
       onTap: () async {
-        try {
-          await launchUrl(url);
-        } catch (e) {
-          log('Url launch failed: $e');
-        }
+        // try {
+        //   await launchUrl(url);
+        // } catch (e) {
+        //   log('Url launch failed: $e');
+        // }
       },
       child: Column(
         children: [
@@ -258,9 +281,16 @@ class _HomePageMobileState extends State<HomePageMobile> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(image),
+              child: Image.asset(projectData.image!),
             ),
           ),
+          Text(
+            projectData.title ?? '',
+            style: TextStyle(
+              color: AppColor.whiteText,
+              fontWeight: FontWeight.w500,
+            ),
+          )
         ],
       ),
     );

@@ -1,0 +1,20 @@
+{
+    "data": [
+     {
+         "title":"EDMC",
+         "image":"assets/photos/projects/edmc_banner.png",
+         "shortDescription":"Diagnostic Center App",
+         "features":"•Authentication  •FCM Push Notification  •Patients Information  •Patient Registration  •Medical Reports  •Social Communication (Post, like, Comment)",
+         "tools":"•Provider State Management, •Firebase for notification and others ",
+         "link":"https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
+     },
+     {
+         "title":"DAL Attendance",
+         "image":"assets/photos/projects/dal_attendance_banner.png",
+         "shortDescription":"•Automatic Attendance App",
+         "features":"Automatic Attendance System",
+         "tools":"•Network Status Detection  •Flutter Foreground Service",
+         "link":"https://play.google.com/store/apps/details?id=com.dhakaapps.attendance"
+     }
+    ]
+  }
