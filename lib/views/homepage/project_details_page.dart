@@ -34,7 +34,7 @@ class ProjectDetailsPage extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(projectData.image!),
-                  Gap(15),
+                  const Gap(15),
                   Text(
                     projectData.title ?? '',
                     style: TextStyle(
@@ -44,12 +44,12 @@ class ProjectDetailsPage extends StatelessWidget {
                   ),
                   Text(
                     projectData.shortDescription ?? '',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Gap(20),
+                  const Gap(20),
                   Row(
                     children: [
                       Expanded(
@@ -58,7 +58,7 @@ class ProjectDetailsPage extends StatelessWidget {
                           text: TextSpan(
                             style: TextStyle(color: AppColor.blackText),
                             children: [
-                              TextSpan(
+                              const TextSpan(
                                 text: 'Feature(s):  ',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
@@ -69,7 +69,7 @@ class ProjectDetailsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Gap(15),
+                  const Gap(15),
                   Row(
                     children: [
                       Expanded(
@@ -78,7 +78,7 @@ class ProjectDetailsPage extends StatelessWidget {
                           text: TextSpan(
                             style: TextStyle(color: AppColor.blackText),
                             children: [
-                              TextSpan(
+                              const TextSpan(
                                 text: 'Tools:  ',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
@@ -89,8 +89,8 @@ class ProjectDetailsPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Gap(20),
-                  projectData.link == null
+                  const Gap(20),
+                  projectData.url == null
                       ? Container()
                       : ElevatedButton(
                           style: ButtonStyle(
@@ -110,7 +110,7 @@ class ProjectDetailsPage extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.center,
                             width: 200,
-                            child: Text(
+                            child: const Text(
                               'Visit',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,

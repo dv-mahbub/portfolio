@@ -252,7 +252,6 @@ class _HomePageMobileState extends State<HomePageMobile> {
   }
 
   Widget projectContainer({required ProjectData projectData}) {
-    // Uri url = Uri.parse(projectData.link ?? '');
     return InkWell(
       onTap: () async {
         if (mounted) {
