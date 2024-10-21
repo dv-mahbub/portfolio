@@ -14,6 +14,13 @@ class ProjectDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: ScreenUtil().screenWidth < 600
+          ? AppBar(
+              title: const Text('Projct Description'),
+              backgroundColor: AppColor.primary,
+              foregroundColor: AppColor.whiteText,
+            )
+          : null,
       body: Container(
         width: 1.sw,
         height: 1.sh,
@@ -33,7 +40,11 @@ class ProjectDetailsPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Image.asset(projectData.image!),
+                  Image.asset(
+                    projectData.image!,
+                    width: ScreenUtil().screenWidth < 600 ? .9.sw : .7.sw,
+                    fit: BoxFit.fitWidth,
+                  ),
                   const Gap(15),
                   Text(
                     projectData.title ?? '',
