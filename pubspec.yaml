@@ -44,6 +44,7 @@ dependencies:
   url_launcher: ^6.3.0
   lottie: ^3.1.2
   marquee_list: ^1.0.0
+  particles_fly: ^0.0.9
 
 dev_dependencies:
   flutter_test:

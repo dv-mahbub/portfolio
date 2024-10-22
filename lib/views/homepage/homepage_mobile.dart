@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee_list/marquee_list.dart';
+import 'package:particles_fly/particles_fly.dart';
 import 'package:portfolio/components/constants/colors.dart';
 import 'package:portfolio/components/constants/string.dart';
 import 'package:portfolio/components/global_function/navigate.dart';
@@ -66,99 +67,117 @@ class _HomePageMobileState extends State<HomePageMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Mahbub',
-          style: GoogleFonts.dancingScript(
-              textStyle: TextStyle(color: AppColor.whiteText)),
-        ),
-        backgroundColor: AppColor.primary,
-        iconTheme: IconThemeData(color: AppColor.whiteText),
-        // automaticallyImplyLeading: false,
-        actions: ScreenUtil().screenWidth < 600
-            ? null
-            : [
-                actionWidget(
-                  icon: Icons.person,
-                  title: 'About Me',
-                  scrollKey: aboutMeKey,
-                ),
-                const Gap(25),
-                actionWidget(
-                  icon: Icons.file_copy,
-                  title: 'Projects',
-                  scrollKey: projectsKey,
-                ),
-                const Gap(25),
-              ],
-      ),
+      appBar: customAppbar(),
       drawer: ScreenUtil().screenWidth < 600 ? customDrawer() : null,
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Visibility(
-            visible: isFabVisible,
-            child: FloatingActionButton(
-              onPressed: () {
-                scrollToSpecificPosition(key: topKey, isFromDrawer: false);
-              },
-              shape: const CircleBorder(),
-              backgroundColor: Colors.grey.shade100,
-              child: Icon(
-                FontAwesomeIcons.arrowUp,
-                color: AppColor.primary,
+      floatingActionButton: customFAB(),
+      body: Container(
+        width: 1.sw,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xff153063), Color(0xff77dfc1)],
+            begin: Alignment.topLeft, // Change for different directions
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Stack(
+          children: [
+            ParticlesFly(
+              height: 1.sh,
+              width: 1.sw,
+              connectDots: true,
+              numberOfParticles: 15,
+            ),
+            SingleChildScrollView(
+              controller: scrollController,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Gap(key: topKey, 5),
+                  marqueeNote(),
+                  const Gap(15),
+                  topTitlePart(),
+                  const Gap(15),
+                  myDescription(),
+                  const Gap(10),
+                  projectDataModel == null
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : projects(),
+                ],
               ),
             ),
-          ),
-          const Gap(15),
-          FloatingActionButton(
-            onPressed: () async {
-              const phoneNumber = '+8801767646871';
-              const message = 'Hello, I would like to get in touch!';
-              final url = Uri.parse(
-                  'https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}');
-              await launchUrl(url);
-            },
-            shape: const CircleBorder(),
-            backgroundColor: AppColor.fabColor,
-            child: Icon(
-              FontAwesomeIcons.whatsapp,
-              color: AppColor.whiteText,
-            ),
-          ),
-          const Gap(15),
-        ],
-      ),
-      body: SingleChildScrollView(
-        controller: scrollController,
-        child: Container(
-          width: 1.sw,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xff153063), Color(0xff77dfc1)],
-              begin: Alignment.topLeft, // Change for different directions
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Gap(key: topKey, 5),
-              marqueeNote(),
-              const Gap(15),
-              topTitlePart(),
-              const Gap(15),
-              myDescription(),
-              const Gap(10),
-              projectDataModel == null
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : projects(),
-            ],
-          ),
+          ],
         ),
       ),
+    );
+  }
+
+  AppBar customAppbar() {
+    return AppBar(
+      title: Text(
+        'Mahbub',
+        style: GoogleFonts.dancingScript(
+            textStyle: TextStyle(color: AppColor.whiteText)),
+      ),
+      backgroundColor: AppColor.primary,
+      iconTheme: IconThemeData(color: AppColor.whiteText),
+      // automaticallyImplyLeading: false,
+      actions: ScreenUtil().screenWidth < 600
+          ? null
+          : [
+              actionWidget(
+                icon: Icons.person,
+                title: 'About Me',
+                scrollKey: aboutMeKey,
+              ),
+              const Gap(25),
+              actionWidget(
+                icon: Icons.file_copy,
+                title: 'Projects',
+                scrollKey: projectsKey,
+              ),
+              const Gap(25),
+            ],
+    );
+  }
+
+  Column customFAB() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Visibility(
+          visible: isFabVisible,
+          child: FloatingActionButton(
+            onPressed: () {
+              scrollToSpecificPosition(key: topKey, isFromDrawer: false);
+            },
+            shape: const CircleBorder(),
+            backgroundColor: Colors.grey.shade100,
+            child: Icon(
+              FontAwesomeIcons.arrowUp,
+              color: AppColor.primary,
+            ),
+          ),
+        ),
+        const Gap(15),
+        FloatingActionButton(
+          onPressed: () async {
+            const phoneNumber = '+8801767646871';
+            const message = 'Hello, I would like to get in touch!';
+            final url = Uri.parse(
+                'https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}');
+            await launchUrl(url);
+          },
+          shape: const CircleBorder(),
+          backgroundColor: AppColor.fabColor,
+          child: Icon(
+            FontAwesomeIcons.whatsapp,
+            color: AppColor.whiteText,
+          ),
+        ),
+        const Gap(15),
+      ],
     );
   }
 
