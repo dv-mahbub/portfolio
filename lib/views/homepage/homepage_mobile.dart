@@ -29,6 +29,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
   final GlobalKey topKey = GlobalKey();
   final GlobalKey aboutMeKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
+  final GlobalKey resumeKey = GlobalKey();
   bool isFabVisible = false;
 
   @override
@@ -98,6 +99,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   topTitlePart(),
                   const Gap(15),
                   myDescription(),
+                  const Gap(10),
+                  resume(),
                   const Gap(10),
                   projectDataModel == null
                       ? const Center(
@@ -375,6 +378,58 @@ class _HomePageMobileState extends State<HomePageMobile> {
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget resume() {
+    return Column(
+      key: resumeKey,
+      children: [
+        Gap(10),
+        topicTitle(title: '-Resume-'),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          width: .7.sw,
+          decoration: BoxDecoration(
+              color: AppColor.whiteText.withOpacity(.15),
+              border: Border.all(width: 2, color: AppColor.whiteText),
+              borderRadius: BorderRadius.circular(25)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  padding: WidgetStatePropertyAll(
+                      EdgeInsets.symmetric(horizontal: 45, vertical: 8)),
+                  backgroundColor: WidgetStatePropertyAll(
+                    const Color.fromARGB(255, 47, 202, 55),
+                  ),
+                  foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
+                  shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
+                ),
+                child: Text('View Resume'),
+              ),
+              Gap(15),
+              ElevatedButton(
+                onPressed: () {
+                  // launchUrl();
+                },
+                style: ButtonStyle(
+                  padding: WidgetStatePropertyAll(
+                      EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
+                  backgroundColor: WidgetStatePropertyAll(
+                      const Color.fromARGB(255, 51, 102, 231)),
+                  foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
+                  shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
+                ),
+                child: Text('Download Resume'),
+              ),
+            ],
+          ),
+        ),
+        Gap(13),
       ],
     );
   }
