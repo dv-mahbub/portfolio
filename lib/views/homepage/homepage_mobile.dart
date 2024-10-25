@@ -394,7 +394,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         topicTitle(title: '-Resume-'),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          width: .7.sw,
+          width: ScreenUtil().screenWidth > 600 ? .7.sw : .9.sw,
           decoration: BoxDecoration(
               color: AppColor.whiteText.withOpacity(.15),
               border: Border.all(width: 2, color: AppColor.whiteText),
@@ -409,8 +409,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   }
                 },
                 style: ButtonStyle(
-                  padding: const WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 45, vertical: 8)),
+                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().screenWidth > 600 ? 45 : 25,
+                      vertical: 8)),
                   backgroundColor: const WidgetStatePropertyAll(
                     Color.fromARGB(255, 47, 202, 55),
                   ),
@@ -421,14 +422,15 @@ class _HomePageMobileState extends State<HomePageMobile> {
                 ),
                 child: const Text('View Resume'),
               ),
-              const Gap(15),
+              Gap(ScreenUtil().screenWidth > 600 ? 15 : 10),
               ElevatedButton(
                 onPressed: () {
                   // launchUrl();
                 },
                 style: ButtonStyle(
-                  padding: const WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
+                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().screenWidth > 600 ? 30 : 15,
+                      vertical: 8)),
                   backgroundColor: const WidgetStatePropertyAll(
                       Color.fromARGB(255, 51, 102, 231)),
                   foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
