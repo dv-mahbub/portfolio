@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -405,8 +406,21 @@ class _HomePageMobileState extends State<HomePageMobile> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  if (mounted) {
-                    navigate(context: context, child: const ResumePreviewer());
+                  if (kIsWeb) {
+                    try {
+                      final fileUrl = Uri.encodeFull('assets/pdf/resume.pdf');
+                      launchUrl(Uri.parse(fileUrl));
+                    } catch (e) {
+                      if (mounted) {
+                        navigate(
+                            context: context, child: const ResumePreviewer());
+                      }
+                    }
+                  } else {
+                    if (mounted) {
+                      navigate(
+                          context: context, child: const ResumePreviewer());
+                    }
                   }
                 },
                 style: ButtonStyle(
