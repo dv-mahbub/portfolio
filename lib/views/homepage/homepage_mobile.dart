@@ -86,7 +86,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
               height: 1.sh,
               width: 1.sw,
               connectDots: true,
-              numberOfParticles: 15,
+              numberOfParticles: 25,
+              maxParticleSize: 1,
             ),
             SingleChildScrollView(
               controller: scrollController,
@@ -386,10 +387,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Column(
       key: resumeKey,
       children: [
-        Gap(10),
+        const Gap(10),
         topicTitle(title: '-Resume-'),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           width: .7.sw,
           decoration: BoxDecoration(
               color: AppColor.whiteText.withOpacity(.15),
@@ -401,35 +402,39 @@ class _HomePageMobileState extends State<HomePageMobile> {
               ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  padding: WidgetStatePropertyAll(
+                  padding: const WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 45, vertical: 8)),
-                  backgroundColor: WidgetStatePropertyAll(
-                    const Color.fromARGB(255, 47, 202, 55),
+                  backgroundColor: const WidgetStatePropertyAll(
+                    Color.fromARGB(255, 47, 202, 55),
                   ),
                   foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
                   shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
+                  overlayColor: const WidgetStatePropertyAll(
+                      Color.fromARGB(255, 11, 109, 62)),
                 ),
-                child: Text('View Resume'),
+                child: const Text('View Resume'),
               ),
-              Gap(15),
+              const Gap(15),
               ElevatedButton(
                 onPressed: () {
                   // launchUrl();
                 },
                 style: ButtonStyle(
-                  padding: WidgetStatePropertyAll(
+                  padding: const WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
-                  backgroundColor: WidgetStatePropertyAll(
-                      const Color.fromARGB(255, 51, 102, 231)),
+                  backgroundColor: const WidgetStatePropertyAll(
+                      Color.fromARGB(255, 51, 102, 231)),
                   foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
                   shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
+                  overlayColor: const WidgetStatePropertyAll(
+                      Color.fromARGB(255, 16, 2, 108)),
                 ),
-                child: Text('Download Resume'),
+                child: const Text('Download Resume'),
               ),
             ],
           ),
         ),
-        Gap(13),
+        const Gap(13),
       ],
     );
   }
