@@ -140,6 +140,12 @@ class _HomePageMobileState extends State<HomePageMobile> {
               ),
               const Gap(25),
               actionWidget(
+                icon: Icons.article,
+                title: 'Resume',
+                scrollKey: resumeKey,
+              ),
+              const Gap(25),
+              actionWidget(
                 icon: Icons.file_copy,
                 title: 'Projects',
                 scrollKey: projectsKey,
@@ -213,6 +219,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
               icon: Icons.person,
               title: 'About Me',
               scrollKey: aboutMeKey,
+            ),
+            drawerItem(
+              icon: Icons.article,
+              title: 'Resume',
+              scrollKey: resumeKey,
             ),
             drawerItem(
               icon: Icons.file_copy,
