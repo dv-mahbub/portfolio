@@ -27,8 +27,8 @@ class ProjectDetailsPage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 95, 226, 236),
-              Color.fromARGB(255, 124, 225, 196)
+              Color.fromARGB(255, 187, 250, 254),
+              Color.fromARGB(255, 198, 255, 187)
             ],
             begin: Alignment.topLeft, // Change for different directions
             end: Alignment.bottomRight,
@@ -40,14 +40,26 @@ class ProjectDetailsPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: .05.sw, vertical: 8),
               child: Column(
                 children: [
-                  Image.asset(
-                    projectData.image!,
-                    width: ScreenUtil().screenWidth < 600
-                        ? .9.sw
-                        : ScreenUtil().screenWidth < 900
-                            ? .7.sw
-                            : .5.sw,
-                    fit: BoxFit.fitWidth,
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          color: Colors.black.withOpacity(.2),
+                          offset: const Offset(2, 2),
+                        ),
+                      ],
+                    ),
+                    child: Image.asset(
+                      projectData.image!,
+                      width: ScreenUtil().screenWidth < 600
+                          ? .9.sw
+                          : ScreenUtil().screenWidth < 900
+                              ? .7.sw
+                              : .5.sw,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                   const Gap(15),
                   Text(
@@ -109,11 +121,12 @@ class ProjectDetailsPage extends StatelessWidget {
                       ? Container()
                       : ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll(AppColor.primary),
-                            foregroundColor:
-                                WidgetStatePropertyAll(AppColor.whiteText),
-                          ),
+                              backgroundColor:
+                                  WidgetStatePropertyAll(AppColor.primary),
+                              foregroundColor:
+                                  WidgetStatePropertyAll(AppColor.whiteText),
+                              overlayColor: const WidgetStatePropertyAll(
+                                  Color.fromARGB(255, 0, 75, 67))),
                           onPressed: () async {
                             final url = Uri.parse(projectData.url ?? '');
                             try {

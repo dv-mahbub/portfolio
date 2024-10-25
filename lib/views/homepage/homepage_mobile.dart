@@ -78,7 +78,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
         width: 1.sw,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xff153063), Color(0xff77dfc1)],
+            colors: [
+              Color(0xff153063),
+              Color(0xff77dfc1),
+            ],
             begin: Alignment.topLeft, // Change for different directions
             end: Alignment.bottomRight,
           ),
