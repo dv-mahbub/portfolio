@@ -15,6 +15,7 @@ import 'package:portfolio/models/project_data_model.dart';
 import 'package:portfolio/views/homepage/project_details_page.dart';
 import 'package:portfolio/views/homepage/resume_previewer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:universal_html/html.dart' as html;
 
 class HomePageMobile extends StatefulWidget {
   const HomePageMobile({super.key});
@@ -426,6 +427,8 @@ class _HomePageMobileState extends State<HomePageMobile> {
               ElevatedButton(
                 onPressed: () {
                   // launchUrl();
+                  downloadFile(
+                      'assets/pdf/resume.pdf', 'Resume of Mahbub Al Hasan.pdf');
                 },
                 style: ButtonStyle(
                   padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
@@ -446,6 +449,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
         const Gap(13),
       ],
     );
+  }
+
+  void downloadFile(String assetPath, String fileName) {
+    html.AnchorElement(
+      href: assetPath,
+    )
+      ..setAttribute("download", fileName)
+      ..click();
   }
 
   Widget topicTitle({required String title}) {
