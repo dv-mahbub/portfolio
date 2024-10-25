@@ -19,6 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,5 +35,21 @@
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
+  <!-- IMPORTANT: load pdfjs files -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"
+    type="text/javascript"></script>
+  <script type="text/javascript">
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.worker.min.js";
+    pdfRenderOptions = {
+    // where cmaps are downloaded from
+   cMapUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/cmaps/",
+    // The cmaps are compressed in the case
+    cMapPacked: true,
+    // any other options for pdfjsLib.getDocument.
+    // params: {}
+    };
+  </script>
 </body>
 </html>
