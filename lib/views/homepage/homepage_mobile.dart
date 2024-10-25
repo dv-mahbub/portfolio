@@ -13,6 +13,7 @@ import 'package:portfolio/components/constants/string.dart';
 import 'package:portfolio/components/global_function/navigate.dart';
 import 'package:portfolio/models/project_data_model.dart';
 import 'package:portfolio/views/homepage/project_details_page.dart';
+import 'package:portfolio/views/homepage/resume_previewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePageMobile extends StatefulWidget {
@@ -158,6 +159,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
             },
             shape: const CircleBorder(),
             backgroundColor: Colors.grey.shade100,
+            heroTag: 'scrollToTop', // Unique hero tag
             child: Icon(
               FontAwesomeIcons.arrowUp,
               color: AppColor.primary,
@@ -175,6 +177,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
           },
           shape: const CircleBorder(),
           backgroundColor: AppColor.fabColor,
+          heroTag: 'whatsapp', // Unique hero tag
           child: Icon(
             FontAwesomeIcons.whatsapp,
             color: AppColor.whiteText,
@@ -400,7 +403,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (mounted) {
+                    navigate(context: context, child: const ResumePreviewer());
+                  }
+                },
                 style: ButtonStyle(
                   padding: const WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 45, vertical: 8)),

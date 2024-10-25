@@ -45,6 +45,7 @@ dependencies:
   lottie: ^3.1.2
   marquee_list: ^1.0.0
   particles_fly: ^0.0.9
+  syncfusion_flutter_pdfviewer: ^27.1.56
 
 dev_dependencies:
   flutter_test:
