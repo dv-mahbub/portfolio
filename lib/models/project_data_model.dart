@@ -1,65 +1,62 @@
+
 import 'dart:convert';
 
-ProjectDataModel projectDataModelFromJson(String str) =>
-    ProjectDataModel.fromJson(json.decode(str));
+ProjectDataModel projectDataModelFromJson(String str) => ProjectDataModel.fromJson(json.decode(str));
 
-String projectDataModelToJson(ProjectDataModel data) =>
-    json.encode(data.toJson());
+String projectDataModelToJson(ProjectDataModel data) => json.encode(data.toJson());
 
 class ProjectDataModel {
-  List<ProjectData>? data;
+    List<Project>? projects;
+    List<Project>? packages;
 
-  ProjectDataModel({
-    this.data,
-  });
+    ProjectDataModel({
+        this.projects,
+        this.packages,
+    });
 
-  factory ProjectDataModel.fromJson(Map<String, dynamic> json) =>
-      ProjectDataModel(
-        data: json["data"] == null
-            ? []
-            : List<ProjectData>.from(
-                json["data"]!.map((x) => ProjectData.fromJson(x))),
-      );
+    factory ProjectDataModel.fromJson(Map<String, dynamic> json) => ProjectDataModel(
+        projects: json["projects"] == null ? [] : List<Project>.from(json["projects"]!.map((x) => Project.fromJson(x))),
+        packages: json["packages"] == null ? [] : List<Project>.from(json["packages"]!.map((x) => Project.fromJson(x))),
+    );
 
-  Map<String, dynamic> toJson() => {
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
-      };
+    Map<String, dynamic> toJson() => {
+        "projects": projects == null ? [] : List<dynamic>.from(projects!.map((x) => x.toJson())),
+        "packages": packages == null ? [] : List<dynamic>.from(packages!.map((x) => x.toJson())),
+    };
 }
 
-class ProjectData {
-  String? title;
-  String? image;
-  String? shortDescription;
-  String? features;
-  String? tools;
-  String? url;
+class Project{
+    String? title;
+    String? image;
+    String? shortDescription;
+    String? features;
+    String? tools;
+    String? url;
 
-  ProjectData({
-    this.title,
-    this.image,
-    this.shortDescription,
-    this.features,
-    this.tools,
-    this.url,
-  });
+    Project({
+        this.title,
+        this.image,
+        this.shortDescription,
+        this.features,
+        this.tools,
+        this.url,
+    });
 
-  factory ProjectData.fromJson(Map<String, dynamic> json) => ProjectData(
+    factory Project.fromJson(Map<String, dynamic> json) => Project(
         title: json["title"],
         image: json["image"],
         shortDescription: json["shortDescription"],
         features: json["features"],
         tools: json["tools"],
         url: json["url"],
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "title": title,
         "image": image,
         "shortDescription": shortDescription,
         "features": features,
         "tools": tools,
         "url": url,
-      };
+    };
 }

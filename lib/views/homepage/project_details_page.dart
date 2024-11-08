@@ -8,7 +8,7 @@ import 'package:portfolio/models/project_data_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectDetailsPage extends StatelessWidget {
-  final ProjectData projectData;
+  final Project projectData;
   const ProjectDetailsPage({super.key, required this.projectData});
 
   @override

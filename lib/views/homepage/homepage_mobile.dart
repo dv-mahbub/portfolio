@@ -317,9 +317,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
           runSpacing: .01.sw,
           children: [
             ...List.generate(
-              projectDataModel?.data?.length ?? 0,
+              projectDataModel?.projects?.length ?? 0,
               (index) => projectContainer(
-                projectData: projectDataModel!.data![index],
+                projectData: projectDataModel!.projects![index],
               ),
             ),
           ],
@@ -329,7 +329,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Widget projectContainer({required ProjectData projectData}) {
+  Widget projectContainer({required Project projectData}) {
     return InkWell(
       onTap: () async {
         if (mounted) {
