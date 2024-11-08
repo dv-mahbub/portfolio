@@ -325,6 +325,22 @@ class _HomePageMobileState extends State<HomePageMobile> {
           ],
         ),
         const Gap(10),
+        Visibility(visible: projectDataModel?.packages != null && projectDataModel!.packages!.isNotEmpty, child:  Column(children: [
+             topicTitle(title: '-Packages-'),
+        Wrap(
+          spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
+          runSpacing: .01.sw,
+          children: [
+            ...List.generate(
+              projectDataModel?.packages?.length ?? 0,
+              (index) => projectContainer(
+                projectData: projectDataModel!.packages![index],
+              ),
+            ),
+          ],
+        ),
+        ],),),
+         const Gap(10),
       ],
     );
   }
