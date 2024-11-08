@@ -31,5 +31,15 @@
          "tools":"•Provider State Management •Firebase for Push Notification",
          "url":"https://play.google.com/store/apps/details?id=com.e_relatives.app"
      }
+    ],
+    "packages": [
+        {
+            "title":"Stylish Pull To Refresh",
+            "image":"assets/photos/packages/stylish_pull_to_refresh.gif",
+            "shortDescription":"Custom loader animation for refresh indicator",
+            "features":"•10 loading animation  •Custom loading widget assign",
+            "tools":"",
+            "url":"https://pub.dev/packages/stylish_pull_to_refresh"
+        }
     ]
   }
