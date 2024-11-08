@@ -1,13 +1,20 @@
 {
     "data": [
-     {
-         "title":"EDMC",
-         "image":"assets/photos/projects/edmc_banner.png",
-         "shortDescription":"Diagnostic Center App",
-         "features":"•Authentication  •FCM Push Notification  •Patients Information  •Patient Registration  •Medical Reports  •Social Communication (Post, like, Comment)",
-         "tools":"•Provider State Management, •Firebase for notification",
-         "url":"https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
-     },
+        {
+            "title":"Al Hamad Medical Center App",
+            "image":"assets/photos/projects/al_hamad_banner.png",
+            "shortDescription":"Diagnostic Center App",
+            "features":"•Authentication  •Patient Registration  •Patient Information  •PDF Generated Medical Reports",
+            "tools":"•Provider State Management",
+            "url":"https://play.google.com/store/apps/details?id=com.clincx.hamad_dhaka"
+        },{
+            "title":"EDMC",
+            "image":"assets/photos/projects/edmc_banner.png",
+            "shortDescription":"Diagnostic Center App",
+            "features":"•Authentication  •FCM Push Notification  •Patient Registration  •Patient Information  •Medical Reports  •Social Communication (Post, like, Comment)",
+            "tools":"•Provider State Management •Firebase for notification",
+            "url":"https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
+        },
      {
          "title":"DAL Attendance",
          "image":"assets/photos/projects/dal_attendance_banner.png",
