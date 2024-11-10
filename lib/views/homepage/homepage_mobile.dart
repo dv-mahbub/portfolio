@@ -372,13 +372,21 @@ class _HomePageMobileState extends State<HomePageMobile> {
               child: Image.asset(projectData.image!),
             ),
           ),
-          Text(
-            projectData.title ?? '',
-            style: TextStyle(
-              color: AppColor.whiteText,
-              fontWeight: FontWeight.w500,
+          SizedBox(
+            width: (ScreenUtil().screenWidth < 900)
+              ? .45.sw
+              : (ScreenUtil().screenWidth < 1200)
+                ? .3.sw
+                : .22.sw,
+            child:
+            Text(
+              projectData.title ?? '',
+              style: TextStyle(
+                color: AppColor.whiteText,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
