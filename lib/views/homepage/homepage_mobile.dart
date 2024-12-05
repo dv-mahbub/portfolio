@@ -314,7 +314,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         topicTitle(title: '-Projects-'),
         Wrap(
           spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
-          runSpacing: .01.sw,
+          runSpacing: 10,
           children: [
             ...List.generate(
               projectDataModel?.projects?.length ?? 0,
@@ -325,22 +325,28 @@ class _HomePageMobileState extends State<HomePageMobile> {
           ],
         ),
         const Gap(10),
-        Visibility(visible: projectDataModel?.packages != null && projectDataModel!.packages!.isNotEmpty, child:  Column(children: [
-             topicTitle(title: '-Packages-'),
-        Wrap(
-          spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
-          runSpacing: .01.sw,
-          children: [
-            ...List.generate(
-              projectDataModel?.packages?.length ?? 0,
-              (index) => projectContainer(
-                projectData: projectDataModel!.packages![index],
+        Visibility(
+          visible: projectDataModel?.packages != null &&
+              projectDataModel!.packages!.isNotEmpty,
+          child: Column(
+            children: [
+              topicTitle(title: '-Packages-'),
+              Wrap(
+                spacing: (ScreenUtil().screenWidth < 900) ? .015.sw : .01.sw,
+                runSpacing: .01.sw,
+                children: [
+                  ...List.generate(
+                    projectDataModel?.packages?.length ?? 0,
+                    (index) => projectContainer(
+                      projectData: projectDataModel!.packages![index],
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        ],),),
-         const Gap(10),
+        const Gap(10),
       ],
     );
   }
@@ -359,7 +365,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         children: [
           Container(
             width: (ScreenUtil().screenWidth < 900)
-                ? .45.sw
+                ? .43.sw
                 : (ScreenUtil().screenWidth < 1200)
                     ? .3.sw
                     : .22.sw,
@@ -372,18 +378,20 @@ class _HomePageMobileState extends State<HomePageMobile> {
               child: Image.asset(projectData.image!),
             ),
           ),
+          const SizedBox(height: 1),
           SizedBox(
             width: (ScreenUtil().screenWidth < 900)
-              ? .45.sw
-              : (ScreenUtil().screenWidth < 1200)
-                ? .3.sw
-                : .22.sw,
-            child:
-            Text(
+                ? .43.sw
+                : (ScreenUtil().screenWidth < 1200)
+                    ? .3.sw
+                    : .22.sw,
+            child: Text(
               projectData.title ?? '',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColor.whiteText,
                 fontWeight: FontWeight.w500,
+                height: .85,
               ),
             ),
           ),
@@ -462,9 +470,11 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   }
                 },
                 style: ButtonStyle(
-                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().screenWidth > 600 ? 45 : 25,
-                      vertical: 8)),
+                  padding: WidgetStatePropertyAll(
+                    EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().screenWidth > 600 ? 45 : 25,
+                        vertical: 8),
+                  ),
                   backgroundColor: const WidgetStatePropertyAll(
                     Color.fromARGB(255, 47, 202, 55),
                   ),
