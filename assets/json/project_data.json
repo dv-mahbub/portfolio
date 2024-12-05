@@ -1,45 +1,46 @@
 {
     "projects": [
         {
-            "title":"Al Hamad Medical Center App",
-            "image":"assets/photos/projects/al_hamad_banner.png",
-            "shortDescription":"Diagnostic Center App",
-            "features":"•Authentication  •Patient Registration  •Patient Information  •PDF Generated Medical Reports",
-            "tools":"•Provider State Management",
-            "url":"https://play.google.com/store/apps/details?id=com.clincx.hamad_dhaka"
-        },{
-            "title":"EDMC",
-            "image":"assets/photos/projects/edmc_banner.png",
-            "shortDescription":"Diagnostic Center App",
-            "features":"•Authentication  •FCM Push Notification  •Patient Registration  •Patient Information  •Medical Reports  •Social Communication (Post, like, Comment)",
-            "tools":"•Provider State Management •Firebase for notification",
-            "url":"https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
+            "title": "Al Hamad Medical Center App",
+            "image": "assets/photos/projects/al_hamad_banner.png",
+            "shortDescription": "Diagnostic Center App",
+            "features": "•Authentication  •Patient Registration  •Patient Information  •PDF Generated Medical Reports",
+            "tools": "•Provider State Management",
+            "url": "https://play.google.com/store/apps/details?id=com.clincx.hamad_dhaka"
         },
-     {
-         "title":"DAL Attendance",
-         "image":"assets/photos/projects/dal_attendance_banner.png",
-         "shortDescription":"Automatic Attendance App",
-         "features":"•Automatic Attendance System",
-         "tools":"•Network Status Change Detection  •Flutter Foreground Service",
-         "url":"https://play.google.com/store/apps/details?id=com.dhakaapps.attendance"
-     },
-     {
-         "title":"E-Relatives",
-         "image":"assets/photos/projects/e_relatives_banner.png",
-         "shortDescription":"Online Medical Services App",
-         "features":"•Blood Donation Request  •Medical Test Request •Subscription  •Medicine and Health Product Purchase (e-commerce) •Ambulance Request  •Doctor Appointment",
-         "tools":"•Provider State Management •Firebase for Push Notification",
-         "url":"https://play.google.com/store/apps/details?id=com.e_relatives.app"
-     }
+        {
+            "title": "EDMC",
+            "image": "assets/photos/projects/edmc_banner.png",
+            "shortDescription": "Diagnostic Center App",
+            "features": "•Authentication  •FCM Push Notification  •Patient Registration  •Patient Information  •Medical Reports  •Social Communication (Post, like, Comment)",
+            "tools": "•Provider State Management •Firebase for notification",
+            "url": "https://play.google.com/store/apps/details?id=com.edmcbd.edmc"
+        },
+        {
+            "title": "DAL Attendance",
+            "image": "assets/photos/projects/dal_attendance_banner.png",
+            "shortDescription": "Automatic Attendance App",
+            "features": "•Automatic Attendance System",
+            "tools": "•Network Status Change Detection  •Flutter Foreground Service",
+            "url": "https://play.google.com/store/apps/details?id=com.dhakaapps.attendance"
+        },
+        {
+            "title": "E-Relatives",
+            "image": "assets/photos/projects/e_relatives_banner.png",
+            "shortDescription": "Online Medical Services App",
+            "features": "•Blood Donation Request  •Medical Test Request •Subscription  •Medicine and Health Product Purchase (e-commerce) •Ambulance Request  •Doctor Appointment",
+            "tools": "•Provider State Management •Firebase for Push Notification",
+            "url": "https://play.google.com/store/apps/details?id=com.e_relatives.app"
+        }
     ],
     "packages": [
         {
-            "title":"Stylish Pull To Refresh",
-            "image":"assets/photos/packages/stylish_pull_to_refresh.gif",
-            "shortDescription":"Custom loader animation for refresh indicator",
-            "features":"•10 loading animation  •Custom loading widget assign",
-            "tools":"",
-            "url":"https://pub.dev/packages/stylish_pull_to_refresh"
+            "title": "Stylish Pull To Refresh",
+            "image": "assets/photos/packages/stylish_pull_to_refresh.gif",
+            "shortDescription": "Custom loader animation for refresh indicator",
+            "features": "•10 loading animations  •Custom loading widget assign",
+            "tools": "",
+            "url": "https://pub.dev/packages/stylish_pull_to_refresh"
         }
     ]
-  }
+}
