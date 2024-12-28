@@ -13,6 +13,14 @@ class ProjectDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = ScreenUtil().screenWidth < 600
+        ? .9.sw
+        : ScreenUtil().screenWidth < 900
+            ? .7.sw
+            : .5.sw;
+    double aspectRatio = 1555 / 875;
+    double height = width / aspectRatio;
+
     return Scaffold(
       appBar: ScreenUtil().screenWidth < 600
           ? AppBar(
@@ -26,10 +34,7 @@ class ProjectDetailsPage extends StatelessWidget {
         height: 1.sh,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 187, 250, 254),
-              Color.fromARGB(255, 198, 255, 187)
-            ],
+            colors: [Color.fromARGB(255, 187, 250, 254), Color.fromARGB(255, 198, 255, 187)],
             begin: Alignment.topLeft, // Change for different directions
             end: Alignment.bottomRight,
           ),
@@ -53,21 +58,15 @@ class ProjectDetailsPage extends StatelessWidget {
                     ),
                     child: Image.asset(
                       projectData.image!,
-                      width: ScreenUtil().screenWidth < 600
-                          ? .9.sw
-                          : ScreenUtil().screenWidth < 900
-                              ? .7.sw
-                              : .5.sw,
-                      fit: BoxFit.fitWidth,
+                      width: width,
+                      height: height,
+                      fit: BoxFit.contain,
                     ),
                   ),
                   const Gap(15),
                   Text(
                     projectData.title ?? '',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.primary),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColor.primary),
                   ),
                   Text(
                     projectData.shortDescription ?? '',
@@ -121,12 +120,9 @@ class ProjectDetailsPage extends StatelessWidget {
                       ? Container()
                       : ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStatePropertyAll(AppColor.primary),
-                              foregroundColor:
-                                  WidgetStatePropertyAll(AppColor.whiteText),
-                              overlayColor: const WidgetStatePropertyAll(
-                                  Color.fromARGB(255, 0, 75, 67))),
+                              backgroundColor: WidgetStatePropertyAll(AppColor.primary),
+                              foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
+                              overlayColor: const WidgetStatePropertyAll(Color.fromARGB(255, 0, 75, 67))),
                           onPressed: () async {
                             final url = Uri.parse(projectData.url ?? '');
                             try {
