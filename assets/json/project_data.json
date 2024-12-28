@@ -49,6 +49,14 @@
             "features": "•Total 5 Text animations",
             "tools": "Flutter Animation",
             "url": "https://pub.dev/packages/stylish_text"
+        },
+        {
+            "title": "Animated FAB",
+            "image": "assets/photos/packages/animated_fab.gif",
+            "shortDescription": "A Flutter package contains an animated floating action button",
+            "features": "Expanding FAB",
+            "tools": "Flutter Animation",
+            "url": "https://pub.dev/packages/animated_fab"
         }
     ]
 }
