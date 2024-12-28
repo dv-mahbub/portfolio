@@ -39,8 +39,16 @@
             "image": "assets/photos/packages/stylish_pull_to_refresh.gif",
             "shortDescription": "Custom loader animation for refresh indicator",
             "features": "•10 loading animations  •Custom loading widget assign",
-            "tools": "",
+            "tools": "Rifresh Indicator",
             "url": "https://pub.dev/packages/stylish_pull_to_refresh"
+        },
+        {
+            "title": "Stylish Text",
+            "image": "assets/photos/packages/stylish_text.gif",
+            "shortDescription": "This flutter package contains few custom animated text",
+            "features": "•Total 5 Text animations",
+            "tools": "Flutter Animation",
+            "url": "https://pub.dev/packages/stylish_text"
         }
     ]
 }

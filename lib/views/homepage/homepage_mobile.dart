@@ -53,8 +53,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
   }
 
   loadProjectData() async {
-    String jsonString =
-        await rootBundle.loadString('assets/json/project_data.json');
+    String jsonString = await rootBundle.loadString('assets/json/project_data.json');
     if (mounted) {
       setState(() {
         projectDataModel = ProjectDataModel.fromJson(jsonDecode(jsonString));
@@ -127,8 +126,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return AppBar(
       title: Text(
         'Mahbub',
-        style: GoogleFonts.dancingScript(
-            textStyle: TextStyle(color: AppColor.whiteText)),
+        style: GoogleFonts.dancingScript(textStyle: TextStyle(color: AppColor.whiteText)),
       ),
       backgroundColor: AppColor.primary,
       iconTheme: IconThemeData(color: AppColor.whiteText),
@@ -182,8 +180,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
           onPressed: () async {
             const phoneNumber = '+8801767646871';
             const message = 'Hello, I would like to get in touch!';
-            final url = Uri.parse(
-                'https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}');
+            final url = Uri.parse('https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encodeComponent(message)}');
             await launchUrl(url);
           },
           shape: const CircleBorder(),
@@ -239,10 +236,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Widget actionWidget(
-      {required IconData icon,
-      required String title,
-      required GlobalKey scrollKey}) {
+  Widget actionWidget({required IconData icon, required String title, required GlobalKey scrollKey}) {
     return InkWell(
       onTap: () {
         scrollToSpecificPosition(key: scrollKey, isFromDrawer: false);
@@ -259,10 +253,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Widget drawerItem(
-      {required IconData icon,
-      required String title,
-      required GlobalKey scrollKey}) {
+  Widget drawerItem({required IconData icon, required String title, required GlobalKey scrollKey}) {
     return ListTile(
       leading: Icon(icon),
       title: Text(title),
@@ -274,11 +265,9 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  Future<void> scrollToSpecificPosition(
-      {required GlobalKey key, bool isFromDrawer = true}) async {
+  Future<void> scrollToSpecificPosition({required GlobalKey key, bool isFromDrawer = true}) async {
     if (key != topKey) {
-      await scrollController.animateTo(0,
-          duration: const Duration(microseconds: 10), curve: Curves.bounceIn);
+      await scrollController.animateTo(0, duration: const Duration(microseconds: 10), curve: Curves.bounceIn);
     }
     if (isFromDrawer) {
       if (mounted) {
@@ -287,12 +276,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (aboutMeKey.currentContext != null) {
-        final RenderBox renderBox =
-            key.currentContext!.findRenderObject() as RenderBox;
+        final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
         final position = renderBox.localToGlobal(Offset.zero);
         final scrollPosition = position.dy; // Get the absolute position
-        double totalHeightOffset =
-            AppBar().preferredSize.height + MediaQuery.of(context).padding.top;
+        double totalHeightOffset = AppBar().preferredSize.height + MediaQuery.of(context).padding.top;
 
         // Calculate the desired scroll position
         double targetScrollPosition = scrollPosition - totalHeightOffset;
@@ -326,8 +313,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         ),
         const Gap(10),
         Visibility(
-          visible: projectDataModel?.packages != null &&
-              projectDataModel!.packages!.isNotEmpty,
+          visible: projectDataModel?.packages != null && projectDataModel!.packages!.isNotEmpty,
           child: Column(
             children: [
               topicTitle(title: '-Packages-'),
@@ -352,6 +338,15 @@ class _HomePageMobileState extends State<HomePageMobile> {
   }
 
   Widget projectContainer({required Project projectData}) {
+    double width = (ScreenUtil().screenWidth < 900)
+        ? .43.sw
+        : (ScreenUtil().screenWidth < 1200)
+            ? .3.sw
+            : .22.sw;
+
+    // Maintain the 1555:875 aspect ratio
+    double aspectRatio = 1555 / 875;
+    double height = width / aspectRatio;
     return InkWell(
       onTap: () async {
         if (mounted) {
@@ -364,13 +359,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
       child: Column(
         children: [
           Container(
-            width: (ScreenUtil().screenWidth < 900)
-                ? .43.sw
-                : (ScreenUtil().screenWidth < 1200)
-                    ? .3.sw
-                    : .22.sw,
+            width: width,
+            height: height,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: const Color.fromARGB(255, 0, 126, 137),
               borderRadius: BorderRadius.circular(8),
             ),
             child: ClipRRect(
@@ -443,10 +435,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           width: ScreenUtil().screenWidth > 600 ? .7.sw : .9.sw,
-          decoration: BoxDecoration(
-              color: AppColor.whiteText.withOpacity(.15),
-              border: Border.all(width: 2, color: AppColor.whiteText),
-              borderRadius: BorderRadius.circular(25)),
+          decoration: BoxDecoration(color: AppColor.whiteText.withOpacity(.15), border: Border.all(width: 2, color: AppColor.whiteText), borderRadius: BorderRadius.circular(25)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -458,30 +447,25 @@ class _HomePageMobileState extends State<HomePageMobile> {
                       launchUrl(Uri.parse(fileUrl));
                     } catch (e) {
                       if (mounted) {
-                        navigate(
-                            context: context, child: const ResumePreviewer());
+                        navigate(context: context, child: const ResumePreviewer());
                       }
                     }
                   } else {
                     if (mounted) {
-                      navigate(
-                          context: context, child: const ResumePreviewer());
+                      navigate(context: context, child: const ResumePreviewer());
                     }
                   }
                 },
                 style: ButtonStyle(
                   padding: WidgetStatePropertyAll(
-                    EdgeInsets.symmetric(
-                        horizontal: ScreenUtil().screenWidth > 600 ? 45 : 25,
-                        vertical: 8),
+                    EdgeInsets.symmetric(horizontal: ScreenUtil().screenWidth > 600 ? 45 : 25, vertical: 8),
                   ),
                   backgroundColor: const WidgetStatePropertyAll(
                     Color.fromARGB(255, 47, 202, 55),
                   ),
                   foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
                   shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
-                  overlayColor: const WidgetStatePropertyAll(
-                      Color.fromARGB(255, 11, 109, 62)),
+                  overlayColor: const WidgetStatePropertyAll(Color.fromARGB(255, 11, 109, 62)),
                 ),
                 child: const Text('View Resume'),
               ),
@@ -489,19 +473,14 @@ class _HomePageMobileState extends State<HomePageMobile> {
               ElevatedButton(
                 onPressed: () {
                   // launchUrl();
-                  downloadFile(
-                      'assets/pdf/resume.pdf', 'Resume of Mahbub Al Hasan.pdf');
+                  downloadFile('assets/pdf/resume.pdf', 'Resume of Mahbub Al Hasan.pdf');
                 },
                 style: ButtonStyle(
-                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().screenWidth > 600 ? 30 : 15,
-                      vertical: 8)),
-                  backgroundColor: const WidgetStatePropertyAll(
-                      Color.fromARGB(255, 51, 102, 231)),
+                  padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: ScreenUtil().screenWidth > 600 ? 30 : 15, vertical: 8)),
+                  backgroundColor: const WidgetStatePropertyAll(Color.fromARGB(255, 51, 102, 231)),
                   foregroundColor: WidgetStatePropertyAll(AppColor.whiteText),
                   shadowColor: WidgetStatePropertyAll(AppColor.yellowText),
-                  overlayColor: const WidgetStatePropertyAll(
-                      Color.fromARGB(255, 16, 2, 108)),
+                  overlayColor: const WidgetStatePropertyAll(Color.fromARGB(255, 16, 2, 108)),
                 ),
                 child: const Text('Download Resume'),
               ),
@@ -571,18 +550,10 @@ class _HomePageMobileState extends State<HomePageMobile> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    customIconButton(
-                        iconData: Icons.mail,
-                        url: 'mailto:dv.mahbub@gmail.com'),
-                    customIconButton(
-                        iconData: FontAwesomeIcons.linkedin,
-                        url: 'https://www.linkedin.com/in/dv-mahbub'),
-                    customIconButton(
-                        iconData: FontAwesomeIcons.github,
-                        url: 'https://github.com/dv-mahbub'),
-                    customIconButton(
-                        iconData: FontAwesomeIcons.youtube,
-                        url: 'https://www.youtube.com/@dv.mahbub'),
+                    customIconButton(iconData: Icons.mail, url: 'mailto:dv.mahbub@gmail.com'),
+                    customIconButton(iconData: FontAwesomeIcons.linkedin, url: 'https://www.linkedin.com/in/dv-mahbub'),
+                    customIconButton(iconData: FontAwesomeIcons.github, url: 'https://github.com/dv-mahbub'),
+                    customIconButton(iconData: FontAwesomeIcons.youtube, url: 'https://www.youtube.com/@dv.mahbub'),
                   ],
                 )
               ],
@@ -597,8 +568,7 @@ class _HomePageMobileState extends State<HomePageMobile> {
     );
   }
 
-  IconButton customIconButton(
-      {required IconData iconData, required String url}) {
+  IconButton customIconButton({required IconData iconData, required String url}) {
     return IconButton(
       onPressed: () {
         _launchUrl(url);
