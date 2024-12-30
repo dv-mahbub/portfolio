@@ -1,16 +1,26 @@
-# portfolio
+# Portfolio
 
-A new Flutter project.
+This project showcases my portfolio as a Flutter Developer.
 
-## Getting Started
+## Project Configuration
 
-This project is a starting point for a Flutter application.
+- **Flutter**: 3.27.1
+- **Dart**: 3.6.0
+- **Java**: 23.0.1
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p align="center">  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/homepage1.PNG?raw=true" alt="Homepage 1" width="75%"/>  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/mobile_homepage1.jpg?raw=true" alt="Mobile Homepage 1" width="19%"/>  
+</p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/homepage2.PNG?raw=true" alt="Homepage 2" width="75%"/>  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/mobile_homepage2.jpg?raw=true" alt="Mobile Homepage 2" width="19%"/>  
+</p>
+
+<p align="center">  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/project.PNG?raw=true" alt="Projects Page" width="76%"/>  
+  <img src="https://github.com/dv-mahbub/file/blob/main/portfolio/mobile_project_page.jpg?raw=true" alt="Mobile Projects Page" width="16%"/>  
+</p>
